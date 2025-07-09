@@ -1,0 +1,34 @@
+[package]
+name = "fust-application"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "Application use cases and orchestration"
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Internal crates
+fust-domain = { path = "../fust-domain" }
+fust-port = { path = "../fust-port" }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Async runtime
+tokio = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+
+# UUID generation
+uuid = { workspace = true }
+
+# Development dependencies
+mockall = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile = { workspace = true } 

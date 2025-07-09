@@ -1,0 +1,27 @@
+[package]
+name = "fust-domain"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "Core domain logic and business entities"
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+
+# Time handling
+chrono = { workspace = true }
+
+# Development dependencies
+mockall = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile = { workspace = true } 

@@ -1,0 +1,33 @@
+[package]
+name = "fust-port"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "Port interfaces and abstractions"
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+# Domain entities
+fust-domain = { path = "../fust-domain" }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Async traits
+async-trait = "0.1"
+
+# Serialization
+serde = { workspace = true }
+
+# Time handling
+chrono = { workspace = true }
+
+# Development dependencies
+mockall = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile = { workspace = true } 

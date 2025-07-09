@@ -1,0 +1,54 @@
+[package]
+name = "fust-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description = "Command-line interface for fust"
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[[bin]]
+name = "fust"
+path = "src/main.rs"
+
+[dependencies]
+# Internal crates
+fust-domain = { path = "../fust-domain" }
+fust-application = { path = "../fust-application" }
+fust-adapter = { path = "../fust-adapter" }
+
+# CLI and TUI
+ratatui = { workspace = true }
+skim = { workspace = true }
+clap = { workspace = true }
+
+# Error handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Async runtime
+tokio = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Path handling
+pathdiff = { workspace = true }
+
+# System directories
+dirs = { workspace = true }
+
+# Development dependencies
+mockall = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+assert_cmd = { workspace = true }
+predicates = { workspace = true } 
