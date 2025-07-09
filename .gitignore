@@ -1,0 +1,40 @@
+# Rust
+/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+tarpaulin-report.html
+cobertura.xml
+lcov.info
+
+# Logs
+*.log
+
+# Local env
+.env
+.env.local
+
+# Testing
+/tmp/
+test-results/
+
+# Release artifacts
+/dist/
+/release/
+
+# Flamegraph
+flamegraph.svg
+perf.data*
