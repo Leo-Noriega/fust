@@ -16,6 +16,7 @@ anyhow = { workspace = true }
 
 # Serialization
 serde = { workspace = true }
+serde_json = { workspace = true }
 
 # Time handling
 chrono = { workspace = true }
