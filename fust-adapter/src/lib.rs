@@ -5,6 +5,8 @@
 
 pub mod repositories;
 pub mod services;
+pub mod filesystem_adapter;
 
 pub use repositories::*;
-pub use services::*; 
+pub use services::*;
+pub use filesystem_adapter::*; 

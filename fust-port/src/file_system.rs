@@ -21,6 +21,9 @@ pub enum FsError {
     
     #[error("Invalid path: {0}")]
     InvalidPath(String),
+    
+    #[error("Feature not implemented: {0}")]
+    NotImplemented(String),
 }
 
 /// Error types for fuzzy finder operations
