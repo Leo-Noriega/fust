@@ -5,10 +5,12 @@ use clap::{Parser, Subcommand};
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 
+mod cli_adapter;
 mod commands;
 mod config;
 mod error;
 
+use cli_adapter::*;
 use commands::*;
 use config::*;
 
@@ -75,6 +77,11 @@ enum Commands {
     Config {
         #[command(subcommand)]
         command: ConfigCommands,
+    },
+    /// List directories in a path
+    Fud {
+        /// Path to list directories from (defaults to current directory)
+        path: Option<String>,
     },
 }
 
@@ -152,6 +159,10 @@ async fn main() -> Result<()> {
                 ConfigCommands::Set { key, value } => config_cmd.set(key, value).await?,
                 ConfigCommands::Get { key } => config_cmd.get(key).await?,
             }
+        }
+        Commands::Fud { path } => {
+            let fud_cmd = FudCommand::new()?;
+            fud_cmd.execute_with_error_handling(path.as_deref())?;
         }
     }
 

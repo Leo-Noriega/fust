@@ -18,6 +18,7 @@ path = "src/main.rs"
 fust-domain = { path = "../fust-domain" }
 fust-application = { path = "../fust-application" }
 fust-adapter = { path = "../fust-adapter" }
+fust-port = { path = "../fust-port" }
 
 # CLI and TUI
 ratatui = { workspace = true }
