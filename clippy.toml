@@ -7,13 +7,12 @@ type-complexity-threshold = 200
 too-many-arguments-threshold = 8
 too-many-lines-threshold = 120
 
-# CLI-specific settings
-single-char-lifetime-names = true
-avoid-breaking-exported-api = false
-
 # Performance and safety
 enum-variant-size-threshold = 200
 trivial-copy-size-limit = 128
 
 # Documentation requirements
-missing-docs-in-crate-items = true 
+missing-docs-in-crate-items = true
+
+# Additional settings (compatible with all Clippy versions)
+avoid-breaking-exported-api = false 
