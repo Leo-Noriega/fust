@@ -1,0 +1,72 @@
+name: Dependabot CI
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened, ready_for_review ]
+
+jobs:
+  # Fast check for dependabot PRs
+  dependabot-check:
+    name: Dependabot Check
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    timeout-minutes: 8
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Setup Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run cargo check
+        run: cargo check --all-targets
+
+      - name: Run cargo test
+        run: cargo test --all
+
+      - name: Run cargo fmt
+        run: cargo fmt --all -- --check
+
+      - name: Run cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+  # Standard CI for non-dependabot PRs
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    timeout-minutes: 10
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Setup Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run cargo check
+        run: cargo check --all-targets
+
+      - name: Run cargo fmt
+        run: cargo fmt --all -- --check
+
+      - name: Run cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+
+      - name: Run cargo audit
+        run: cargo audit
+
+      - name: Run cargo test
+        run: cargo test --all --verbose 

@@ -7,9 +7,10 @@ updates:
       interval: "weekly"
       day: "sunday"
       time: "04:00"
+    target-branch: "develop"
     open-pull-requests-limit: 10
     reviewers:
-      - "noriega"
+      - "Leo-Noriega"
     commit-message:
       prefix: "cargo"
       include: "scope"
@@ -21,9 +22,10 @@ updates:
       interval: "weekly"
       day: "sunday" 
       time: "04:00"
+    target-branch: "develop"
     open-pull-requests-limit: 5
     reviewers:
-      - "noriega"
+      - "Leo-Noriega"
     commit-message:
       prefix: "ci"
       include: "scope" 
