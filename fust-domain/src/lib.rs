@@ -8,12 +8,14 @@
 
 pub mod entities;
 pub mod errors;
+pub mod fs_errors;
 pub mod metadata;
 pub mod services;
 pub mod value_objects;
 
 pub use entities::*;
 pub use errors::*;
+pub use fs_errors::*;
 pub use metadata::*;
 pub use services::*;
 pub use value_objects::*; 

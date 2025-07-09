@@ -21,8 +21,15 @@ serde_json = { workspace = true }
 # Time handling
 chrono = { workspace = true }
 
+# Async runtime
+tokio = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+
 # Development dependencies
 mockall = { workspace = true, optional = true }
 
 [dev-dependencies]
-tempfile = { workspace = true } 
+tempfile = { workspace = true }
+futures = "0.3" 

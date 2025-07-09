@@ -2,6 +2,8 @@
 
 use crate::{DomainError, Project, Task, TaskPriority, TaskStatus};
 
+pub mod directory_service;
+
 /// Domain service for project management
 pub struct ProjectService;
 
