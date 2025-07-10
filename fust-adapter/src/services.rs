@@ -64,7 +64,7 @@ impl GitService for GitServiceImpl {
     }
 
     async fn get_status(&self, _path: &FilePath) -> Result<GitStatus> {
-        // TODO: Implement actual git status using git2
+        // TODO: Implement actual git status (git2 dependency removed due to security vulnerability)
         Ok(GitStatus {
             is_repository: true,
             current_branch: Some("main".to_string()),
@@ -76,17 +76,17 @@ impl GitService for GitServiceImpl {
     }
 
     async fn get_current_branch(&self, _path: &FilePath) -> Result<Option<String>> {
-        // TODO: Implement actual git branch using git2
+        // TODO: Implement actual git branch (git2 dependency removed due to security vulnerability)
         Ok(Some("main".to_string()))
     }
 
     async fn get_remote_url(&self, _path: &FilePath) -> Result<Option<String>> {
-        // TODO: Implement actual git remote using git2
+        // TODO: Implement actual git remote (git2 dependency removed due to security vulnerability)
         Ok(None)
     }
 
     async fn get_commit_history(&self, _path: &FilePath, _limit: usize) -> Result<Vec<GitCommit>> {
-        // TODO: Implement actual git log using git2
+        // TODO: Implement actual git log (git2 dependency removed due to security vulnerability)
         Ok(Vec::new())
     }
 }

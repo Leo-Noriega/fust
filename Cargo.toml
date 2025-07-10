@@ -25,8 +25,8 @@ tokio = { version = "1.28", features = ["fs", "macros", "rt-multi-thread"] }
 ratatui = "0.24"
 skim = "0.10"
 
-# Git integration
-git2 = "0.17"
+# Git integration (commented out until implementation)
+# git2 = "0.17"
 
 # Configuration management
 confy = "0.6"
