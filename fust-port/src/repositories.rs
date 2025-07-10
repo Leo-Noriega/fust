@@ -47,5 +47,8 @@ pub trait TaskRepository: Send + Sync {
     async fn find_by_status(&self, status: &fust_domain::TaskStatus) -> anyhow::Result<Vec<Task>>;
 
     /// Find tasks by priority
-    async fn find_by_priority(&self, priority: &fust_domain::TaskPriority) -> anyhow::Result<Vec<Task>>;
-} 
+    async fn find_by_priority(
+        &self,
+        priority: &fust_domain::TaskPriority,
+    ) -> anyhow::Result<Vec<Task>>;
+}

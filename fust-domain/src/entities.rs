@@ -19,12 +19,7 @@ pub struct Project {
 
 impl Project {
     /// Create a new project
-    pub fn new(
-        id: ProjectId,
-        name: String,
-        path: String,
-        description: Option<String>,
-    ) -> Self {
+    pub fn new(id: ProjectId, name: String, path: String, description: Option<String>) -> Self {
         let now = Utc::now();
         Self {
             id,
@@ -179,4 +174,4 @@ pub enum TaskPriority {
     Medium,
     High,
     Critical,
-} 
+}

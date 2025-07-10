@@ -39,9 +39,7 @@ impl DomainError {
 
     /// Create a new business rule violation error
     pub fn business_rule_violation(rule: impl Into<String>) -> Self {
-        Self::BusinessRuleViolation {
-            rule: rule.into(),
-        }
+        Self::BusinessRuleViolation { rule: rule.into() }
     }
 
     /// Create a new validation error
@@ -58,4 +56,4 @@ impl DomainError {
             message: message.into(),
         }
     }
-} 
+}

@@ -36,7 +36,7 @@ impl CliConfig {
     pub fn load(config_path: Option<&str>) -> Result<Self> {
         let config_path = config_path
             .map(PathBuf::from)
-            .unwrap_or_else(|| get_default_config_path());
+            .unwrap_or_else(get_default_config_path);
 
         if config_path.exists() {
             let content = std::fs::read_to_string(&config_path)?;
@@ -51,7 +51,7 @@ impl CliConfig {
     pub fn save(&self, config_path: Option<&str>) -> Result<()> {
         let config_path = config_path
             .map(PathBuf::from)
-            .unwrap_or_else(|| get_default_config_path());
+            .unwrap_or_else(get_default_config_path);
 
         // Create parent directory if it doesn't exist
         if let Some(parent) = config_path.parent() {
@@ -66,7 +66,10 @@ impl CliConfig {
     /// Get configuration value
     pub fn get_value(&self, key: &str) -> Option<String> {
         match key {
-            "workspace_path" => self.workspace_path.as_ref().map(|p| p.to_string_lossy().to_string()),
+            "workspace_path" => self
+                .workspace_path
+                .as_ref()
+                .map(|p| p.to_string_lossy().to_string()),
             "default_project" => self.default_project.clone(),
             "theme" => Some(self.theme.clone()),
             "auto_save" => Some(self.auto_save.to_string()),
@@ -116,4 +119,4 @@ fn get_default_config_path() -> PathBuf {
 /// Load configuration
 pub fn load_config(config_path: Option<&str>) -> Result<CliConfig> {
     CliConfig::load(config_path)
-} 
+}

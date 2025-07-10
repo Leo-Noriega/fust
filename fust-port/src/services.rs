@@ -41,7 +41,11 @@ pub trait GitService: Send + Sync {
     async fn get_remote_url(&self, path: &FilePath) -> anyhow::Result<Option<String>>;
 
     /// Get commit history
-    async fn get_commit_history(&self, path: &FilePath, limit: usize) -> anyhow::Result<Vec<GitCommit>>;
+    async fn get_commit_history(
+        &self,
+        path: &FilePath,
+        limit: usize,
+    ) -> anyhow::Result<Vec<GitCommit>>;
 }
 
 /// Configuration service interface
@@ -126,4 +130,4 @@ impl Default for AppConfig {
             notifications_enabled: true,
         }
     }
-} 
+}

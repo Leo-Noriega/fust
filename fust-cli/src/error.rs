@@ -4,6 +4,7 @@ use thiserror::Error;
 
 /// CLI-specific error types
 #[derive(Error, Debug)]
+#[allow(dead_code)]
 pub enum CliError {
     #[error("Configuration error: {message}")]
     Config { message: String },
@@ -29,6 +30,7 @@ pub enum CliError {
 
 impl CliError {
     /// Create a new configuration error
+    #[allow(dead_code)]
     pub fn config(message: impl Into<String>) -> Self {
         Self::Config {
             message: message.into(),
@@ -36,6 +38,7 @@ impl CliError {
     }
 
     /// Create a new command error
+    #[allow(dead_code)]
     pub fn command(message: impl Into<String>) -> Self {
         Self::Command {
             message: message.into(),
@@ -43,6 +46,7 @@ impl CliError {
     }
 
     /// Create a new invalid input error
+    #[allow(dead_code)]
     pub fn invalid_input(message: impl Into<String>) -> Self {
         Self::InvalidInput {
             message: message.into(),
@@ -50,9 +54,8 @@ impl CliError {
     }
 
     /// Create a new project not found error
+    #[allow(dead_code)]
     pub fn project_not_found(name: impl Into<String>) -> Self {
-        Self::ProjectNotFound {
-            name: name.into(),
-        }
+        Self::ProjectNotFound { name: name.into() }
     }
-} 
+}

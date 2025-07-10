@@ -2,7 +2,7 @@
 
 use anyhow::Result;
 use clap::{Parser, Subcommand};
-use tracing::{info, Level};
+use tracing::{Level, info};
 use tracing_subscriber::FmtSubscriber;
 
 mod cli_adapter;
@@ -108,8 +108,12 @@ async fn main() -> Result<()> {
     let cli = Cli::parse();
 
     // Initialize logging
-    let _subscriber = FmtSubscriber::builder()
-        .with_max_level(if cli.verbose { Level::DEBUG } else { Level::INFO })
+    FmtSubscriber::builder()
+        .with_max_level(if cli.verbose {
+            Level::DEBUG
+        } else {
+            Level::INFO
+        })
         .with_target(false)
         .with_thread_ids(true)
         .with_thread_names(true)
@@ -132,7 +136,11 @@ async fn main() -> Result<()> {
             let list_cmd = ListCommand::new(config);
             list_cmd.execute().await?;
         }
-        Commands::Add { name, path, description } => {
+        Commands::Add {
+            name,
+            path,
+            description,
+        } => {
             let add_cmd = AddCommand::new(config);
             add_cmd.execute(name, path, description).await?;
         }
@@ -168,4 +176,4 @@ async fn main() -> Result<()> {
 
     info!("fust CLI completed successfully");
     Ok(())
-} 
+}

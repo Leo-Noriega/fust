@@ -1,5 +1,5 @@
 //! CLI adapter for file system operations
-//! 
+//!
 //! This module provides CLI adapters that connect the application layer
 //! with the command-line interface, following hexagonal architecture principles.
 
@@ -11,7 +11,7 @@ use std::path::Path;
 use tracing::{error, info};
 
 /// CLI adapter for the fud subcommand
-/// 
+///
 /// This adapter orchestrates the list directories functionality
 /// by injecting the FileSystemAdapter into the ListDirectories use case.
 #[derive(Debug)]
@@ -22,27 +22,27 @@ pub struct FudCommand {
 
 impl FudCommand {
     /// Create a new FudCommand instance
-    /// 
+    ///
     /// # Returns
     /// * `Result<Self, FsError>` - The command instance or error
     pub fn new() -> Result<Self, FsError> {
         // Create the filesystem adapter
         let adapter = FileSystemAdapter::new()?;
-        
+
         // Create the use case with injected adapter
         let use_case = ListDirectories::new(adapter);
-        
+
         Ok(Self { use_case })
     }
 
     /// Execute the fud command
-    /// 
+    ///
     /// Lists directories in the specified path and prints their names
     /// to stdout, separated by newlines.
-    /// 
+    ///
     /// # Arguments
     /// * `path` - Optional path to list directories from (defaults to current directory)
-    /// 
+    ///
     /// # Returns
     /// * `Result<(), FsError>` - Success or error
     pub fn execute(&self, path: Option<&str>) -> Result<(), FsError> {
@@ -67,13 +67,13 @@ impl FudCommand {
     }
 
     /// Execute the fud command with error handling
-    /// 
+    ///
     /// This method provides proper error handling and user-friendly
     /// error messages for CLI usage.
-    /// 
+    ///
     /// # Arguments
     /// * `path` - Optional path to list directories from
-    /// 
+    ///
     /// # Returns
     /// * `Result<(), anyhow::Error>` - Success or error
     pub fn execute_with_error_handling(&self, path: Option<&str>) -> Result<(), anyhow::Error> {
@@ -101,4 +101,4 @@ impl FudCommand {
             }
         }
     }
-} 
+}

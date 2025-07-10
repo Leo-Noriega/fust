@@ -1,4 +1,4 @@
-# rustfmt configuration for professional CLI development
+# rustfmt configuration for professional CLI development (stable features only)
 edition = "2024"
 max_width = 100
 hard_tabs = false
@@ -6,30 +6,17 @@ tab_spaces = 4
 newline_style = "Unix"
 use_small_heuristics = "Default"
 
-# Import organization
+# Import organization (stable features)
 reorder_imports = true
 reorder_modules = true
-group_imports = "StdExternalCrate"
-imports_granularity = "Crate"
 
-# Code style for CLI apps
-fn_single_line = true
-where_single_line = true
-format_code_in_doc_comments = true
-format_strings = true
-format_macro_matchers = true
-
-# Error handling style
+# Code style for CLI apps (stable features)
 use_try_shorthand = true
 use_field_init_shorthand = true
 
-# Safety and readability
+# Safety and readability (stable features)
 remove_nested_parens = true
-normalize_comments = true
-wrap_comments = true
-comment_width = 80
-
-# Professional formatting
 force_explicit_abi = true
-enum_discrim_align_threshold = 20
-struct_field_align_threshold = 20 
+
+# Professional formatting (stable features)
+merge_derives = true 

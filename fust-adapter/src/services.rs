@@ -37,13 +37,13 @@ impl FileSystemService for FileSystemServiceImpl {
     async fn list_directory(&self, path: &FilePath) -> Result<Vec<String>> {
         let mut entries = Vec::new();
         let mut read_dir = fs::read_dir(path.as_str()).await?;
-        
+
         while let Some(entry) = read_dir.next_entry().await? {
             if let Ok(name) = entry.file_name().into_string() {
                 entries.push(name);
             }
         }
-        
+
         Ok(entries)
     }
 
@@ -93,6 +93,7 @@ impl GitService for GitServiceImpl {
 
 /// Configuration service implementation
 pub struct ConfigurationServiceImpl {
+    #[allow(dead_code)]
     config_path: String,
 }
 
@@ -153,7 +154,7 @@ impl UserInterfaceService for UserInterfaceServiceImpl {
         if items.is_empty() {
             return Ok(None);
         }
-        
+
         // For now, just return the first item
         Ok(Some(items[0].clone()))
     }
@@ -174,4 +175,4 @@ impl UserInterfaceService for UserInterfaceServiceImpl {
         println!("{}", message);
         Ok(())
     }
-} 
+}

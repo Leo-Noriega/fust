@@ -146,4 +146,4 @@ fn test_clone() {
 
     assert_eq!(file_metadata, file_clone);
     assert_eq!(dir_metadata, dir_clone);
-} 
+}

@@ -43,7 +43,7 @@ impl FileProjectRepository {
         if let Some(parent) = self.data_path.parent() {
             fs::create_dir_all(parent).await?;
         }
-        
+
         let content = serde_json::to_string_pretty(projects)?;
         fs::write(&self.projects_file(), content).await?;
         Ok(())
@@ -127,7 +127,7 @@ impl FileTaskRepository {
         if let Some(parent) = self.data_path.parent() {
             fs::create_dir_all(parent).await?;
         }
-        
+
         let content = serde_json::to_string_pretty(tasks)?;
         fs::write(&self.tasks_file(), content).await?;
         Ok(())
@@ -185,9 +185,11 @@ impl TaskRepository for FileTaskRepository {
         let tasks = self.load_tasks().await?;
         let filtered: Vec<Task> = tasks
             .values()
-            .filter(|task| std::mem::discriminant(&task.priority) == std::mem::discriminant(priority))
+            .filter(|task| {
+                std::mem::discriminant(&task.priority) == std::mem::discriminant(priority)
+            })
             .cloned()
             .collect();
         Ok(filtered)
     }
-} 
+}

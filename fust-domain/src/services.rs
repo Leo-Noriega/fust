@@ -11,10 +11,16 @@ impl ProjectService {
     /// Validate a project
     pub fn validate_project(project: &Project) -> Result<(), DomainError> {
         if project.name.is_empty() {
-            return Err(DomainError::validation_error("name", "Project name cannot be empty"));
+            return Err(DomainError::validation_error(
+                "name",
+                "Project name cannot be empty",
+            ));
         }
         if project.path.is_empty() {
-            return Err(DomainError::validation_error("path", "Project path cannot be empty"));
+            return Err(DomainError::validation_error(
+                "path",
+                "Project path cannot be empty",
+            ));
         }
         Ok(())
     }
@@ -34,7 +40,10 @@ impl TaskService {
     /// Validate a task
     pub fn validate_task(task: &Task) -> Result<(), DomainError> {
         if task.title.is_empty() {
-            return Err(DomainError::validation_error("title", "Task title cannot be empty"));
+            return Err(DomainError::validation_error(
+                "title",
+                "Task title cannot be empty",
+            ));
         }
         Ok(())
     }
@@ -74,18 +83,27 @@ impl WorkspaceService {
     /// Validate workspace path
     pub fn validate_workspace_path(path: &str) -> Result<(), DomainError> {
         if path.is_empty() {
-            return Err(DomainError::validation_error("path", "Workspace path cannot be empty"));
+            return Err(DomainError::validation_error(
+                "path",
+                "Workspace path cannot be empty",
+            ));
         }
-        
+
         let path_obj = std::path::Path::new(path);
         if !path_obj.exists() {
-            return Err(DomainError::validation_error("path", "Workspace path does not exist"));
+            return Err(DomainError::validation_error(
+                "path",
+                "Workspace path does not exist",
+            ));
         }
-        
+
         if !path_obj.is_dir() {
-            return Err(DomainError::validation_error("path", "Workspace path must be a directory"));
+            return Err(DomainError::validation_error(
+                "path",
+                "Workspace path must be a directory",
+            ));
         }
-        
+
         Ok(())
     }
 
@@ -94,4 +112,4 @@ impl WorkspaceService {
         let git_dir = std::path::Path::new(path).join(".git");
         git_dir.exists() && git_dir.is_dir()
     }
-} 
+}

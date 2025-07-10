@@ -73,4 +73,4 @@ impl DirectoryMetadata {
     pub fn parent(&self) -> Option<&Path> {
         self.path.parent()
     }
-} 
+}

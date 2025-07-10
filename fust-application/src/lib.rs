@@ -1,10 +1,10 @@
 //! Application use cases and orchestration
-//! 
+//!
 //! This crate contains the application layer with use cases that orchestrate
 //! the domain logic and external services.
 
-pub mod use_cases;
 pub mod list_directories;
+pub mod use_cases;
 
+pub use list_directories::*;
 pub use use_cases::*;
-pub use list_directories::*; 

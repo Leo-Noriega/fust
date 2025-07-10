@@ -30,13 +30,13 @@ where
     ) -> Result<Project> {
         let project_id = ProjectId::new(uuid::Uuid::new_v4().to_string());
         let project = Project::new(project_id, name, path, description);
-        
+
         // Validate project
         fust_domain::ProjectService::validate_project(&project)?;
-        
+
         // Save project
         self.project_repo.save(&project).await?;
-        
+
         Ok(project)
     }
 
@@ -58,7 +58,7 @@ where
                 return Err(anyhow::anyhow!("Project cannot be deleted"));
             }
         }
-        
+
         self.project_repo.delete(id).await
     }
 
@@ -95,13 +95,13 @@ where
     ) -> Result<Task> {
         let task_id = TaskId::new(uuid::Uuid::new_v4().to_string());
         let task = Task::new(task_id, title, description, priority);
-        
+
         // Validate task
         fust_domain::TaskService::validate_task(&task)?;
-        
+
         // Save task
         self.task_repo.save(&task).await?;
-        
+
         Ok(task)
     }
 
@@ -149,4 +149,4 @@ where
     pub async fn find_tasks_by_project(&self, project_id: &ProjectId) -> Result<Vec<Task>> {
         self.task_repo.find_by_project(project_id).await
     }
-} 
+}
