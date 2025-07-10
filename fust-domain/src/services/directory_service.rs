@@ -17,7 +17,7 @@ pub struct DirectoryService;
 
 impl DirectoryService {
     /// Create a new DirectoryService instance
-    /// 
+    ///
     /// # Returns
     /// * `Self` - The service instance
     pub fn new() -> Self {
